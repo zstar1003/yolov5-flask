@@ -1,7 +1,3 @@
-"""
-Simple app to upload an image via a web form 
-and view the inference results on the image in the browser.
-"""
 import argparse
 import io
 import os
