@@ -9,4 +9,4 @@ RUN pip install -r requirements.txt -i https://mirrors.aliyun.com/pypi/simple/
 
 EXPOSE 5000
 
-CMD ["python", "webapp.py", "--port=5000"]
+CMD ["python", "webapp.py"]

@@ -1,4 +1,3 @@
-import argparse
 import io
 import os
 import random
@@ -30,13 +29,6 @@ def predict():
         img_bytes = file.read()
         img = Image.open(io.BytesIO(img_bytes))
         img = cv2.cvtColor(np.asarray(img), cv2.COLOR_RGB2BGR)
-        # print(img_bytes)
-        # print("---")
-        # print(io.BytesIO(img_bytes))
-        # img = cv2.imread(img_bytes)
-
-        # print(img)
-        # results = model(img, size=640)
 
         if img is not None:
             showimg = img
@@ -70,11 +62,7 @@ def predict():
 
         imgFile = "static/img.jpg"
         cv2.imwrite(imgFile, showimg)
-        # image = Image.fromarray(cv2.cvtColor(showimg, cv2.COLOR_BGR2RGB))
-        # image.render()  # updates results.imgs with boxes and labels
-        # for img in showimg.imgs:
-        #     img_base64 = Image.fromarray(img)
-        #     img_base64.save("static/image0.jpg", format="JPEG")
+
         return redirect(imgFile)
 
     return render_template("index.html")
@@ -94,8 +82,5 @@ if __name__ == "__main__":
     colors = [[random.randint(0, 255) for _ in range(3)] for _ in names]
     stride = int(model.stride.max())
     imgsz = check_img_size(640, s=stride)
-    parser = argparse.ArgumentParser(description="Flask app exposing yolov5 models")
-    parser.add_argument("--port", default=5000, type=int, help="port number")
-    args = parser.parse_args()
 
     app.run(host="0.0.0.0", port=5000)  # debug=True causes Restarting with stat
